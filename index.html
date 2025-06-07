@@ -3,376 +3,576 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Samuel Ojonugwa Momoh - Data Scientist Portfolio">
-  <title>Samuel Ojonugwa Momoh - Data Scientist</title>
+  <meta name="description" content="Samuel Ojonugwa Momoh - Data Scientist Portfolio | Building intelligent solutions with Python, Machine Learning, and Data Analytics">
+  <meta name="keywords" content="Data Scientist, Python Developer, Machine Learning, AI, Portfolio, Samuel Momoh">
+  <meta name="author" content="Samuel Ojonugwa Momoh">
+  <meta property="og:title" content="Samuel Ojonugwa Momoh - Data Scientist Portfolio">
+  <meta property="og:description" content="Passionate Data Scientist building intelligent solutions with Python, ML, and AI">
+  <meta property="og:type" content="website">
+  <title>Samuel Ojonugwa Momoh - Data Scientist & AI Developer</title>
+  
+  <!-- Preload critical resources -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/feather-icons"></script>
-  <script src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.js"></script>
   <script src="https://unpkg.com/feather-icons"></script>
+  
   <style>
-    .modal {
-      transition: opacity 0.25s ease;
-    }
-  </style>
-  <style>
+    /* Enhanced Animations */
     .animate-fadeIn {
-      animation: fadeIn 1.0s ease-out;
+      animation: fadeIn 1.2s ease-out;
     }
+    
+    .animate-slideUp {
+      animation: slideUp 1s ease-out;
+    }
+    
+    .animate-bounce-slow {
+      animation: bounce 3s infinite;
+    }
+    
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Smooth scrolling */
+    html { scroll-behavior: smooth; }
+    
+    /* Enhanced Modal */
+    .modal {
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+    
+    /* Gradient text effect */
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Enhanced hover effects */
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    
+    /* Tech stack floating animation */
+    .tech-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .tech-float:nth-child(even) {
+      animation-delay: -3s;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    /* Loading skeleton */
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+    
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
     }
   </style>
 </head>
 
-<body class="bg-gradient-to-r from-white to-blue-50 text-gray-800 font-sans">
+<body class="bg-gradient-to-br from-white via-blue-50 to-indigo-100 text-gray-800 font-sans">
+  <!-- Loading Screen -->
+  <div id="loading" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+    <div class="text-center">
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+      <p class="text-gray-600">Loading Portfolio...</p>
+    </div>
+  </div>
 
-    <header id="header" class="fixed top-0 left-0 w-full bg-white shadow-lg z-50 py-4 px-8">
-        <div class="max-w-screen-xl mx-auto flex justify-between items-center">
-          <a href="#home" class="font-semibold text-xl text-blue-600">Samuel Momoh</a>
-      
-          <!-- Hamburger for mobile -->
-          <button id="menu-toggle" class="md:hidden text-blue-600 focus:outline-none text-2xl">
-            ☰
-          </button>
-      
-          <!-- Desktop Nav -->
-          <nav class="hidden md:block">
-            <ul class="flex gap-8 text-lg">
-              <li><a href="#home" class="hover:text-blue-600">Home</a></li>
-              <li><a href="#about" class="hover:text-blue-600">About</a></li>
-              <li><a href="#projects" class="hover:text-blue-600">Projects</a></li>
-              <li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
-            </ul>
-          </nav>
-        </div>
-      
-        <!-- Mobile Nav Dropdown -->
-        <nav id="mobile-menu" class="md:hidden hidden px-8 pt-4 pb-6 bg-white">
-          <ul class="flex flex-col gap-4 text-lg">
-            <li><a href="#home" class="hover:text-blue-600 block">Home</a></li>
-            <li><a href="#about" class="hover:text-blue-600 block">About</a></li>
-            <li><a href="#projects" class="hover:text-blue-600 block">Projects</a></li>
-            <li><a href="#contact" class="hover:text-blue-600 block">Contact</a></li>
-          </ul>
-        </nav>
-    </header>
-      
+  <!-- Header with improved design -->
+  <header id="header" class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-lg z-40 py-4 px-8 transition-all duration-300">
+    <div class="max-w-screen-xl mx-auto flex justify-between items-center">
+      <a href="#home" class="font-bold text-xl gradient-text hover:scale-105 transition-transform">
+        Samuel Momoh
+      </a>
+  
+      <!-- Hamburger for mobile -->
+      <button id="menu-toggle" class="md:hidden text-blue-600 focus:outline-none text-2xl hover:scale-110 transition-transform">
+        ☰
+      </button>
+  
+      <!-- Desktop Nav with active states -->
+      <nav class="hidden md:block">
+        <ul class="flex gap-8 text-lg">
+          <li><a href="#home" class="nav-link hover:text-blue-600 transition-all duration-300 relative">Home</a></li>
+          <li><a href="#about" class="nav-link hover:text-blue-600 transition-all duration-300 relative">About</a></li>
+          <li><a href="#projects" class="nav-link hover:text-blue-600 transition-all duration-300 relative">Projects</a></li>
+          <li><a href="#contact" class="nav-link hover:text-blue-600 transition-all duration-300 relative">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Mobile Nav Dropdown -->
+    <nav id="mobile-menu" class="md:hidden hidden px-8 pt-4 pb-6 bg-white/95 backdrop-blur-md">
+      <ul class="flex flex-col gap-4 text-lg">
+        <li><a href="#home" class="hover:text-blue-600 block transition-colors">Home</a></li>
+        <li><a href="#about" class="hover:text-blue-600 block transition-colors">About</a></li>
+        <li><a href="#projects" class="hover:text-blue-600 block transition-colors">Projects</a></li>
+        <li><a href="#contact" class="hover:text-blue-600 block transition-colors">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <main class="pt-10">
-
-    <section id="home" class="min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 pt-14 py-5 px-4 md:px-12">
+    <!-- Hero Section Enhanced -->
+    <section id="home" class="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 pt-14 py-5 px-4 md:px-12">
       <div class="max-w-screen-lg mx-auto flex flex-col-reverse md:flex-row items-center gap-8">
-        <div class="md:w-1/2 text-center md:text-left animate-fadeIn">
-          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
-            Hi, I am <br><span class="text-blue-600">Samuel Ojonugwa Momoh</span>
+        <div class="md:w-1/2 text-center md:text-left animate-slideUp">
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+            Hi, I am <br><span class="gradient-text">Samuel Ojonugwa Momoh</span>
           </h1>
-          <p class="text-xl text-gray-600">Data Scientist • Developer • Problem Solver</p>
-          <br>
-          <p class="text-base md:text-lg text-gray-700 mb-6">
-            A passionate <strong>Data Scientist</strong> focused on turning data into insights and building intelligent solutions.
+          <p class="text-xl md:text-2xl text-gray-600 mb-2">Data Scientist • AI Developer • Problem Solver</p>
+          <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto md:mx-0 mb-6"></div>
+          
+          <p class="text-base md:text-lg text-gray-700 mb-8 leading-relaxed">
+            A passionate <strong>Data Scientist</strong> focused on turning data into insights and building intelligent solutions that make a real-world impact.
           </p>
 
-          <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-            <a href="#projects" class="px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all shadow-md text-base">
+          <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4 mb-8">
+            <a href="#projects" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 text-base font-semibold">
               See My Projects
             </a>
-            <a href="assets/docs/SAMUEL MOMOH [RESUME].pdf" target="_blank" class="px-8 py-4 border border-blue-600 text-blue-600 rounded-xl hover:bg-blue-50 transition-all shadow-sm text-base">
+            <a href="assets/docs/SAMUEL MOMOH [RESUME].pdf" target="_blank" class="px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-xl hover:bg-blue-600 hover:text-white transition-all shadow-md hover:shadow-lg transform hover:scale-105 text-base font-semibold">
               Download CV
             </a>
           </div>
 
-          <div class="mt-6 flex justify-center md:justify-start gap-6 text-gray-600 text-2xl">
-            <a href="https://github.com/GRIITTYY" target="_blank" class="hover:text-black" title="GitHub">
-              <i data-feather="github"></i>Github
+          <div class="flex justify-center md:justify-start gap-6 text-gray-600">
+            <a href="https://github.com/GRIITTYY" target="_blank" class="flex items-center gap-2 hover:text-black transition-all hover:scale-110" title="GitHub">
+              <i data-feather="github" class="w-6 h-6"></i>
+              <span class="hidden sm:inline">GitHub</span>
             </a>
-            <a href="https://linkedin.com/in/samuel-o-momoh" target="_blank" class="hover:text-blue-700" title="LinkedIn">
-              <i data-feather="linkedin"></i>LinkedIn
+            <a href="https://linkedin.com/in/samuel-o-momoh" target="_blank" class="flex items-center gap-2 hover:text-blue-700 transition-all hover:scale-110" title="LinkedIn">
+              <i data-feather="linkedin" class="w-6 h-6"></i>
+              <span class="hidden sm:inline">LinkedIn</span>
             </a>
-            <a href="https://medium.com/@GRIITTYY" target="_blank" class="hover:text-gray-800" title="Medium">
-              <i data-feather="book-open"></i>Medium
+            <a href="https://medium.com/@GRIITTYY" target="_blank" class="flex items-center gap-2 hover:text-gray-800 transition-all hover:scale-110" title="Medium">
+              <i data-feather="book-open" class="w-6 h-6"></i>
+              <span class="hidden sm:inline">Medium</span>
             </a>
           </div>
         </div>
 
         <div id="avatar-container" class="md:w-1/2 flex justify-center animate-fadeIn">
-          <img src="assets/images/pic3.png" alt="Portrait of Samuel Momoh - Data Scientist" class="w-72 h-72 rounded-full object-cover shadow-xl border-4 border-white">
+          <div class="relative">
+            <img src="assets/images/pic3.png" alt="Portrait of Samuel Momoh - Data Scientist" 
+                 class="w-72 h-72 md:w-80 md:h-80 rounded-full object-cover shadow-2xl border-4 border-white hover:scale-105 transition-transform duration-300">
+            <div class="absolute -z-10 top-4 left-4 w-72 h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 opacity-20 animate-bounce-slow"></div>
+          </div>
         </div>
       </div>
 
-      <!-- Row 1 -->
-        <div class="mt-8 flex flex-wrap justify-center gap-4">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-plain-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
+      <!-- Enhanced Tech Stack -->
+      <div class="mt-16">
+        <h3 class="text-2xl font-bold text-center text-gray-700 mb-8">Technologies I Work With</h3>
+        
+        <!-- Row 1 -->
+        <div class="flex flex-wrap justify-center gap-6 mb-6">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="Python" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-plain-wordmark.svg" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="Streamlit" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original-wordmark.svg" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="NumPy" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original-wordmark.svg" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="Pandas" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="Scikit-learn" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="TensorFlow" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="PyTorch" />
         </div>
         
         <!-- Row 2 -->
-        <div class="mt-8 flex flex-wrap justify-center gap-4">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/plotly/plotly-original-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matplotlib/matplotlib-original-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/anaconda/anaconda-original-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="assets/images/icons/tableau-icon.png" class="w-12 sm:w-14 md:w-[90px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg" class="w-10 sm:w-12 md:w-[70px] h-auto" />
+        <div class="flex flex-wrap justify-center gap-6 mb-6">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/plotly/plotly-original-wordmark.svg" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="Plotly" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="MySQL" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="PostgreSQL" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="MongoDB" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="GitHub" />
+          <img src="assets/images/icons/tableau-icon.png" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="Tableau" />
         </div>
         
         <!-- Row 3 -->
-        <div class="mt-8 flex flex-wrap justify-center gap-4">
-            <img src="assets/images/icons/bs4-icon.webp" class="w-12 sm:w-14 md:w-[90px] h-auto" />
-            <strong class="text-sm sm:text-base md:text-lg mt-2">and many more...</strong>
+        <div class="flex flex-wrap justify-center gap-6">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original-wordmark.svg" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="Flask" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="HTML5" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg" class="w-12 md:w-16 h-auto tech-float hover:scale-110 transition-transform" alt="CSS3" />
+          <span class="text-lg font-semibold text-gray-600 self-center">and many more...</span>
         </div>
+      </div>
     </section>
 
+    <!-- About Me Section Enhanced -->
+    <section id="about" class="min-h-screen bg-gradient-to-r from-white to-blue-50 py-20 px-4 md:px-12">
+      <div class="container mx-auto animate-fadeIn">
+        <h2 class="text-5xl font-extrabold text-center gradient-text mb-12">About Me</h2>
 
-    <!-- About Me Section -->
-    <section id="about" class="min-h-screen bg-gradient-to-l from-blue-100 to-white py-12 px-4 md:px-12">
-        <div class="container mx-auto animate-fadeIn">
-        <h2 class="text-5xl font-extrabold text-center text-blue-600 mb-6">About Me</h2>
-    
-        <div class="flex flex-col md:flex-row items-center justify-center mb-8">
-            <!-- Profile Image -->
-            <img src="assets/images/new.png" alt="Samuel Momoh" class="w-40 h-40 rounded-full shadow-lg border-4 border-blue-200 object-cover mb-8 md:mb-0 md:mr-8" />
-            
-            <!-- Introduction -->
-            <div class="prose max-w-3xl mx-auto text-gray-700 leading-relaxed">
-            <p class="text-xl text-center md:text-left">
-                I'm a curious and driven data scientist who loves building real-world solutions that makes life easier. Whether I'm analyzing complex data or crafting intuitive user experiences, I enjoy finding creative ways to solve problems. I’m always up for a challenge.
+        <div class="flex flex-col lg:flex-row items-center justify-center mb-12 gap-12">
+          <!-- Profile Image with enhanced styling -->
+          <div class="relative">
+            <img src="assets/images/new.png" alt="Samuel Momoh" 
+                 class="w-48 h-48 lg:w-56 lg:h-56 rounded-full shadow-2xl border-4 border-white object-cover hover:scale-105 transition-transform duration-300" />
+            <div class="absolute -z-10 top-2 left-2 w-48 h-48 lg:w-56 lg:h-56 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 opacity-20"></div>
+          </div>
+          
+          <!-- Introduction with better typography -->
+          <div class="max-w-3xl text-gray-700 leading-relaxed">
+            <p class="text-xl lg:text-2xl text-center lg:text-left mb-6 font-light">
+              I'm a curious and driven data scientist who loves building <span class="font-semibold text-blue-600">real-world solutions</span> that make life easier. Whether I'm analyzing complex data or crafting intuitive user experiences, I enjoy finding creative ways to solve problems.
             </p>
-            <p class="text-xl text-center md:text-left mt-4">
-                I’ve had the opportunity to work on projects that blend AI, web development, and automation and I’m always excited to learn more. My approach is grounded in empathy, clarity, and continuous improvement. 
-                <br><br>Come with me let’s explore how I turn data into impactful solutions.
+            <p class="text-xl lg:text-2xl text-center lg:text-left font-light">
+              I've had the opportunity to work on projects that blend <span class="font-semibold text-purple-600">AI, web development, and automation</span>, and I'm always excited to learn more. My approach is grounded in empathy, clarity, and continuous improvement.
             </p>
+            <div class="mt-8 text-center lg:text-left">
+              <p class="text-lg text-blue-600 font-semibold">Come with me—let's explore how I turn data into impactful solutions.</p>
             </div>
+          </div>
         </div>
-    
-        <!-- Skills Section -->
-        <h3 class="text-4xl font-extrabold text-blue-600 text-center my-12">My Skills</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 hover:bg-blue-50">
-            <h4 class="flex items-center gap-2 text-xl font-semibold text-blue-600 mb-4">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg" alt="Python Logo" class="w-8 h-8" />
-                Python
-            </h4>
-            <p>Expert in Python for data analysis, machine learning, and automation.</p>
+
+        <!-- Skills Section Enhanced -->
+        <h3 class="text-4xl font-extrabold gradient-text text-center mb-12">My Expertise</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Skill cards with improved design -->
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover-lift border border-gray-100">
+            <div class="flex items-center gap-3 mb-4">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" class="w-10 h-10" />
+              <h4 class="text-xl font-bold text-gray-800">Python Development</h4>
             </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 hover:bg-blue-50">
-            <h4 class="flex items-center gap-2 text-xl font-semibold text-blue-600 mb-4">
-                <i data-feather="bar-chart-2"></i> Data Analysis
-            </h4>
-            <p>Proficient in data analysis using Pandas, NumPy, and SciPy.</p>
+            <p class="text-gray-600 leading-relaxed">Expert in Python for data analysis, machine learning, web development, and automation solutions.</p>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover-lift border border-gray-100">
+            <div class="flex items-center gap-3 mb-4">
+              <i data-feather="bar-chart-2" class="w-10 h-10 text-blue-600"></i>
+              <h4 class="text-xl font-bold text-gray-800">Data Analysis</h4>
             </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 hover:bg-blue-50">
-                <h4 class="flex items-center gap-2 text-xl font-semibold text-blue-600 mb-4">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg" alt="Scikit-learn Logo" class="w-8 h-8" />
-                    Machine Learning
-                </h4>
-                <p>Experienced in building ML models using Scikit-learn and TensorFlow.</p>
+            <p class="text-gray-600 leading-relaxed">Proficient in extracting insights from complex datasets using Pandas, NumPy, and advanced statistical methods.</p>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover-lift border border-gray-100">
+            <div class="flex items-center gap-3 mb-4">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg" alt="ML" class="w-10 h-10" />
+              <h4 class="text-xl font-bold text-gray-800">Machine Learning</h4>
             </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 hover:bg-blue-50">
-            <h4 class="flex items-center gap-2 text-xl font-semibold text-blue-600 mb-4">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL Logo" class="w-8 h-8"/>
-                SQL & Databases
-            </h4>
-            <p>Skilled in querying and managing databases with SQL.</p>
+            <p class="text-gray-600 leading-relaxed">Experienced in building and deploying ML models using Scikit-learn, TensorFlow, and PyTorch.</p>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover-lift border border-gray-100">
+            <div class="flex items-center gap-3 mb-4">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="Database" class="w-10 h-10" />
+              <h4 class="text-xl font-bold text-gray-800">Database Management</h4>
             </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 hover:bg-blue-50">
-            <h4 class="flex items-center gap-2 text-xl font-semibold text-blue-600 mb-4">
-                <i data-feather="activity"></i> Data Visualization
-            </h4>
-            <p>Experience with Matplotlib, Seaborn, and Tableau for impactful visuals.</p>
+            <p class="text-gray-600 leading-relaxed">Skilled in designing and querying databases with SQL, PostgreSQL, and MongoDB.</p>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover-lift border border-gray-100">
+            <div class="flex items-center gap-3 mb-4">
+              <i data-feather="activity" class="w-10 h-10 text-green-600"></i>
+              <h4 class="text-xl font-bold text-gray-800">Data Visualization</h4>
             </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 hover:bg-blue-50">
-            <h4 class="flex items-center gap-2 text-xl font-semibold text-blue-600 mb-4">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS Logo" class="w-8 h-8"/>
-                Cloud Computing
-            </h4>
-            <p>Familiar with AWS and GCP for deploying data solutions at scale.</p>
+            <p class="text-gray-600 leading-relaxed">Creating compelling visualizations with Plotly, Matplotlib, Seaborn, and Tableau for impactful storytelling.</p>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover-lift border border-gray-100">
+            <div class="flex items-center gap-3 mb-4">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS Logo" class="w-8 h-8"/>
+              <h4 class="text-xl font-bold text-gray-800">Cloud Computing</h4>
             </div>
+            <p class="text-gray-600 leading-relaxed">Deploying scalable data solutions on AWS and GCP with containerization and CI/CD pipelines.</p>
+          </div>
         </div>
-        </div>
+      </div>
     </section>
 
+    <!-- Projects Section Enhanced -->
+    <section id="projects" class="max-w-7xl mx-auto px-4 py-20">
+      <h2 class="text-5xl font-bold mb-12 text-center gradient-text">Featured Projects</h2>
+      <p class="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
+        Here are some of my recent projects that showcase my skills in data science, machine learning, and web development.
+      </p>
 
-      <!-- Filters -->
-  <section id="projects" class="max-w-6xl mx-auto px-4 py-12">
-    <h2 class="text-4xl font-bold mb-6 text-center">My Projects</h2>
-
-    <!-- <div class="flex justify-center gap-4 mb-10">
-      <button class="filter-btn px-4 py-2 bg-blue-600 text-white rounded-lg" data-filter="all">All</button>
-      <button class="filter-btn px-4 py-2 bg-gray-200 text-gray-700 rounded-lg" data-filter="ml">ML</button>
-      <button class="filter-btn px-4 py-2 bg-gray-200 text-gray-700 rounded-lg" data-filter="nlp">NLP</button>
-      <button class="filter-btn px-4 py-2 bg-gray-200 text-gray-700 rounded-lg" data-filter="streamlit">Streamlit</button>
-    </div> -->
-
-    <!-- Projects Grid -->
-     <!-- 1st Card -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectGrid">
-      <div class="project-card bg-white rounded-xl shadow-md overflow-hidden" data-category="ml" data-index="0">
-        <img src="assets/images/anti_cheat_ss.png" alt="Project Image" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-2">Anti-Cheat QR Code-Based Attendance System</h3>
-          <p class="text-gray-600 text-sm mb-3">Anti-Cheat User Check-In System, developed with Python and Streamlit</p>
-
-          <div class="flex flex-wrap gap-2 mb-3">
-            <span class="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded">Streamlit</span>
-            <span class="text-sm bg-green-100 text-green-700 px-2 py-1 rounded">SQLite</span>
-            <span class="text-sm bg-yellow-100 text-yellow-700 px-2 py-1 rounded">Segno (QR)</span>
+      <!-- Projects Grid Enhanced -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-10" id="projectGrid">
+        <!-- FinSight Card -->
+        <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover-lift border border-gray-100" data-category="ml" data-index="0">
+          <div class="relative">
+            <img src="assets/images/finsight_ss.png" alt="FinSight Bank Statement Analyzer" class="w-full h-64 object-cover">
+            <div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              Live Demo
+            </div>
           </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold mb-3 text-gray-800">FinSight - Bank Statement Analyzer</h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              Intelligent financial analytics platform with anomaly detection and interactive visualizations for Nigerian bank statements. Features statistical analysis and automated categorization.
+            </p>
 
-          <div class="flex justify-between items-center">
-            <button onclick="openModal(0)" class="text-blue-600 hover:underline">More Details</button>
-            <a href="https://github.com/yourusername/project1" target="_blank" title="GitHub">
-              <i data-feather="github" class="w-5 h-5 text-gray-700 hover:text-black"></i>
-            </a>
-          </div>
-        </div>
-      </div>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="text-sm bg-red-100 text-red-700 px-3 py-1 rounded-full font-medium">Streamlit</span>
+              <span class="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-medium">Plotly</span>
+              <span class="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium">PyMuPDF</span>
+              <span class="text-sm bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-medium">Pandas</span>
+            </div>
 
-      <!-- 2nd Card -->
-      <div class="project-card bg-white rounded-xl shadow-md overflow-hidden" data-category="nlp" data-index="1">
-        <img src="assets/images/grit_studio_ss.png" alt="Project Image" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-2">GRIT Studio (Utility Web App)</h3>
-          <p class="text-gray-600 text-sm mb-3">The Grit Studio is a fun web-app designed to solve cool and fun problems for individuals. Our provided tools range from basic QR Code Makers to Advanced AI Apps.</p>
-
-          <div class="flex flex-wrap gap-2 mb-3">
-            <span class="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded">Streamlit</span>
-            <!-- <span class="text-sm bg-purple-100 text-purple-700 px-2 py-1 rounded">Pandas</span> -->
-            <span class="text-sm bg-green-100 text-green-700 px-2 py-1 rounded">Segno (QR)</span>
-          </div>
-
-          <div class="flex justify-between items-center">
-            <button onclick="openModal(1)" class="text-blue-600 hover:underline">More Details</button>
-            <a href="https://gritstudio.streamlit.app" target="_blank" title="GitHub">
-              <i data-feather="github" class="w-5 h-5 text-gray-700 hover:text-black"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Modal -->
-  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden modal z-50">
-    <div class="bg-white rounded-xl shadow-lg max-w-3xl w-full max-h-[80vh] overflow-y-auto relative p-6">
-      <button onclick="closeModal()" class="absolute top-3 right-4 text-gray-500 hover:text-black">
-        <i data-feather="x" class="w-6 h-6"></i>
-      </button>
-
-      <div id="modalContent">
-        <!-- Modal content will be dynamically filled -->
-      </div>
-    </div>
-  </div>
-
-    
-
-    <section id="contact" class="bg-gray-100 py-12">
-        <div class="max-w-screen-xl mx-auto px-4">
-          <h2 class="text-3xl font-semibold text-center text-blue-600 mb-8">Contact Me</h2>
-      
-          <!-- Contact Form -->
-          <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <form action="#" method="POST" class="bg-white p-8 rounded-lg shadow-lg space-y-6">
-              <div>
-                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                <input type="text" id="name" name="name" class="mt-1 p-3 w-full border border-gray-300 rounded-lg" required />
-              </div>
-              <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" id="email" name="email" class="mt-1 p-3 w-full border border-gray-300 rounded-lg" required />
-              </div>
-              <div>
-                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                <textarea id="message" name="message" rows="4" class="mt-1 p-3 w-full border border-gray-300 rounded-lg" required></textarea>
-              </div>
-              <button type="submit" class="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700">Send Message</button>
-            </form>
-       -->
-            <!-- Social Media Contacts -->
-            <div class="space-y-6">
-              <p class="text-lg font-medium text-gray-700">Feel free to reach out via social media:</p>
-              <div class="space-y-4">
-                <a href="https://wa.me/+2348084235076" class="flex items-center text-blue-600 hover:underline">
-                  <img src="assets/images/icons/whatsapp-icon.png" alt="WhatsApp" class="w-6 h-6 mr-3">
-                  WhatsApp
-                </a>
-                <a href="mailto:youremail@iammomohsamuel@gmail.com" class="flex items-center text-blue-600 hover:underline">
-                  <img src="assets/images/icons/gmail-icon.png" alt="Gmail" class="w-6 h-6 mr-3">
-                  Gmail
-                </a>
-                <a href="https://www.linkedin.com/in/samuel-o-momoh" class="flex items-center text-blue-600 hover:underline">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" alt="LinkedIn" class="w-6 h-6 mr-3" />
-                  LinkedIn
+            <div class="flex justify-between items-center">
+              <div class="flex gap-3">
+                <button onclick="openModal(0)" class="text-blue-600 hover:text-blue-800 font-semibold transition-colors">
+                  Learn More
+                </button>
+                <a href="https://finsight-app.streamlit.app" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors font-semibold">
+                  Live Demo
                 </a>
               </div>
+              <a href="https://github.com/GRIITTYY/FinSight" target="_blank" title="GitHub" class="hover:scale-110 transition-transform">
+                <i data-feather="github" class="w-6 h-6 text-gray-700 hover:text-black"></i>
+              </a>
             </div>
           </div>
         </div>
-    </section>
-  
-      
 
+        <!-- GRIT Studio Card -->
+        <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover-lift border border-gray-100" data-category="web" data-index="1">
+          <div class="relative">
+            <img src="assets/images/grit_studio_ss.png" alt="GRIT Studio" class="w-full h-64 object-cover">
+            <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              Web App
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold mb-3 text-gray-800">GRIT Studio</h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              A comprehensive utility web application featuring various tools from QR code generators to advanced AI applications, designed to solve everyday problems.
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-medium">Streamlit</span>
+              <span class="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium">QR Generation</span>
+              <span class="text-sm bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-medium">AI Tools</span>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <div class="flex gap-3">
+                <button onclick="openModal(1)" class="text-blue-600 hover:text-blue-800 font-semibold transition-colors">
+                  Learn More
+                </button>
+                <a href="https://gritstudio.streamlit.app" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                  Try It Out
+                </a>
+              </div>
+              <a href="https://github.com/GRIITTYY/GRIT-STUDIO" target="_blank" title="GitHub" class="hover:scale-110 transition-transform">
+                <i data-feather="github" class="w-6 h-6 text-gray-700 hover:text-black"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center mt-16">
+        <p class="text-lg text-gray-600 mb-6">Want to see more of my work?</p>
+        <a href="https://github.com/GRIITTYY" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 bg-gray-800 text-white rounded-xl hover:bg-gray-900 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold">
+          <i data-feather="github" class="w-5 h-5"></i>
+          View All Projects on GitHub
+        </a>
+      </div>
+    </section>
+
+    <!-- Enhanced Modal -->
+    <div id="modal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden modal z-50">
+      <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto relative m-4">
+        <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black z-10 bg-white rounded-full p-2 shadow-lg">
+          <i data-feather="x" class="w-6 h-6"></i>
+        </button>
+
+        <div id="modalContent" class="p-8">
+          <!-- Modal content will be dynamically filled -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Section Enhanced -->
+    <section id="contact" class="bg-gradient-to-r from-gray-50 to-blue-50 py-20">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-5xl font-bold gradient-text mb-6">Let's Connect</h2>
+        <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+          I'm always open to discussing new opportunities, collaborating on exciting projects, or just having a chat about data science and technology.
+        </p>
+
+        <!-- Contact Cards -->
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+          <a href="https://wa.me/+2348084235076" class="bg-white p-8 rounded-2xl shadow-lg hover-lift border border-gray-100 group">
+            <img src="assets/images/icons/whatsapp-icon.png" alt="WhatsApp" class="w-12 h-12 mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">WhatsApp</h3>
+            <p class="text-gray-600">Quick chat or call</p>
+          </a>
+
+          <a href="mailto:iammomohsamuel@gmail.com" class="bg-white p-8 rounded-2xl shadow-lg hover-lift border border-gray-100 group">
+            <img src="assets/images/icons/gmail-icon.png" alt="Gmail" class="w-12 h-12 mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Email</h3>
+            <p class="text-gray-600">Professional inquiries</p>
+          </a>
+
+          <a href="https://www.linkedin.com/in/samuel-o-momoh" class="bg-white p-8 rounded-2xl shadow-lg hover-lift border border-gray-100 group">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" alt="LinkedIn" class="w-12 h-12 mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">LinkedIn</h3>
+            <p class="text-gray-600">Professional network</p>
+          </a>
+        </div>
+
+        <!-- Response Time -->
+        <div class="bg-blue-600 text-white p-6 rounded-2xl inline-block">
+          <p class="text-lg font-semibold">⚡ Quick Response Guaranteed</p>
+          <p class="text-blue-100">I typically respond within 24 hours</p>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer id="footer" class="bg-gray-800 text-white py-8">
-    <div class="max-w-screen-lg mx-auto text-center">
-      <p>&copy; 2025 Samuel Ojonugwa Momoh | All Rights Reserved</p>
+  <!-- Enhanced Footer -->
+  <footer id="footer" class="bg-gray-900 text-white py-12">
+    <div class="max-w-screen-lg mx-auto px-4">
+      <div class="text-center">
+        <h3 class="text-2xl font-bold mb-4">Samuel Ojonugwa Momoh</h3>
+        <p class="text-gray-400 mb-6">Data Scientist • AI Developer • Problem Solver</p>
+        
+        <div class="flex justify-center gap-6 mb-8">
+          <a href="https://github.com/GRIITTYY" target="_blank" class="hover:text-blue-400 transition-colors">
+            <i data-feather="github" class="w-6 h-6"></i>
+          </a>
+          <a href="https://linkedin.com/in/samuel-o-momoh" target="_blank" class="hover:text-blue-400 transition-colors">
+            <i data-feather="linkedin" class="w-6 h-6"></i>
+          </a>
+          <a href="https://medium.com/@GRIITTYY" target="_blank" class="hover:text-blue-400 transition-colors">
+            <i data-feather="book-open" class="w-6 h-6"></i>
+          </a>
+        </div>
+        
+        <div class="border-t border-gray-700 pt-6">
+          <p class="text-gray-400">&copy; 2025 Samuel Ojonugwa Momoh | All Rights Reserved</p>
+          <p class="text-sm text-gray-500 mt-2">Built with passion and modern web technologies</p>
+        </div>
+      </div>
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script>
+    // Initialize Feather Icons
     feather.replace();
-  </script>
 
-  <!-- Script to toggle menu -->
-  <script>
+    // Loading screen
+    window.addEventListener('load', () => {
+      document.getElementById('loading').style.display = 'none';
+    });
+
+    // Mobile menu toggle
     const toggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
-  
+
     toggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
-  </script>
 
-<script>
-    feather.replace();
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          // Close mobile menu if open
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    });
 
-    // Modal Logic
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 100) {
+        header.classList.add('bg-white/95');
+      } else {
+        header.classList.remove('bg-white/95');
+      }
+    });
+
+    // Project modal functionality
     const projectData = [
       {
-        title: "Anti-Cheat QR Code-Based Attendance System",
-        image: "assets/images/anti_cheat_ss.png",
-        description: "This is an Anti-Cheat QR Code-Based Attendance System built with Streamlit and SQLite. The system ensures that each QR code is unique and can only be used once, preventing duplicate check-ins and unauthorized attendance entries.",
-        tags: ["Streamlit", "QR Code", "SQLite"],
-        github: "https://github.com/GRIITTYY/anti-cheat-checkin-system"
+        title: "FinSight - Bank Statement Analyzer",
+        image: "assets/images/finsight_ss.png",
+        description: "An intelligent financial analytics platform that processes OPay bank statements and provides comprehensive insights. Features include inflow/outflow pattern analysis, anomaly detection using statistical thresholds, interactive Plotly visualizations, and automated transaction categorization. The app identifies suspicious activities like late-night large transactions and unusual spending patterns while maintaining complete user privacy with local processing.",
+        features: [
+          "🔍 Statistical anomaly detection",
+          "📊 Interactive data visualizations",
+          "🏦 OPay bank statement processing",
+          "🔒 Complete privacy with local processing",
+          "📈 Financial pattern analysis",
+          "⚡ Real-time insights generation"
+        ],
+        tags: ["Streamlit", "Plotly", "PyMuPDF", "Pandas", "Data Analytics", "Financial Analysis"],
+        github: "https://github.com/GRIITTYY/FinSight",
+        demo: "https://finsight-app.streamlit.app"
       },
       {
         title: "GRIT Studio (Utility Web App)",
         image: "assets/images/grit_studio_ss.png",
-        description: "The Grit Studio is a fun web-app designed to solve cool and fun problems for individuals. Our provided tools range from basic QR Code Makers to Advanced AI Apps.",
-        tags: ["Streamlit", "Segno (QR)"],
-        github: "https://github.com/GRIITTYY/GRIT-STUDIO"
+        description: "The GRIT Studio is a comprehensive utility web application designed to solve everyday problems for individuals. Our toolkit ranges from basic QR Code generators to advanced AI applications, providing users with powerful tools in an intuitive interface.",
+        features: [
+          "🔗 QR Code generation and customization",
+          "🤖 AI-powered tools and utilities",
+          "🎨 User-friendly interface design",
+          "⚡ Fast and responsive performance",
+          "🔧 Multiple utility tools in one place",
+          "📱 Mobile-responsive design"
+        ],
+        tags: ["Streamlit", "Segno (QR)", "AI Tools", "Web Development"],
+        github: "https://github.com/GRIITTYY/GRIT-STUDIO",
+        demo: "https://gritstudio.streamlit.app"
       }
-      // WIll dd more projects here
     ];
 
     function openModal(index) {
@@ -380,35 +580,59 @@
       const modalContent = document.getElementById("modalContent");
 
       modalContent.innerHTML = `
-  <img src="${project.image}" class="w-full h-60 object-cover rounded-lg mb-4">
-  <h3 class="text-2xl font-bold mb-2">${project.title}</h3>
-  <p class="text-gray-700 mb-4">${project.description}</p>
-  <div class="flex flex-wrap gap-2 mb-3">
-    ${project.tags.map(tag => {
-      // Dynamically apply different background colors based on tag
-      let bgColor = 'bg-gray-100';
-      let textColor = 'text-gray-700';
+        <img src="${project.image}" class="w-full h-72 object-cover rounded-xl mb-6">
+        <h3 class="text-3xl font-bold mb-4 text-gray-800">${project.title}</h3>
+        <p class="text-gray-700 mb-6 text-lg leading-relaxed">${project.description}</p>
+        
+        <h4 class="text-xl font-bold mb-4 text-gray-800">Key Features:</h4>
+        <div class="grid md:grid-cols-2 gap-3 mb-6">
+          ${project.features.map(feature => `
+            <div class="flex items-center gap-2 text-gray-700">
+              <span>${feature}</span>
+            </div>
+          `).join('')}
+        </div>
+        
+        <h4 class="text-xl font-bold mb-4 text-gray-800">Technologies Used:</h4>
+        <div class="flex flex-wrap gap-2 mb-8">
+          ${project.tags.map(tag => {
+            let bgColor = 'bg-gray-100';
+            let textColor = 'text-gray-700';
+            
+            if (tag.includes('Streamlit')) {
+              bgColor = 'bg-red-100';
+              textColor = 'text-red-700';
+            } else if (tag.includes('Plotly')) {
+              bgColor = 'bg-blue-100';
+              textColor = 'text-blue-700';
+            } else if (tag.includes('AI')) {
+              bgColor = 'bg-purple-100';
+              textColor = 'text-purple-700';
+            } else if (tag.includes('Data')) {
+              bgColor = 'bg-green-100';
+              textColor = 'text-green-700';
+            }
 
-      if (tag === 'ML') {
-        bgColor = 'bg-blue-100';
-        textColor = 'text-blue-700';
-      } else if (tag === 'NLP') {
-        bgColor = 'bg-green-100';
-        textColor = 'text-green-700';
-      } else if (tag === 'Clustering') {
-        bgColor = 'bg-purple-100';
-        textColor = 'text-purple-700';
-      }
+            return `<span class="text-sm ${bgColor} ${textColor} px-3 py-1 rounded-full font-medium">${tag}</span>`;
+          }).join('')}
+        </div>
+        
+        <div class="flex gap-4">
+          <a href="${project.github}" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-gray-800 text-white rounded-xl hover:bg-gray-900 transition-all shadow-lg font-semibold">
+            <i data-feather="github" class="w-5 h-5"></i> 
+            View Code
+          </a>
+          ${project.demo ? `
+            <a href="${project.demo}" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all shadow-lg font-semibold">
+              <i data-feather="external-link" class="w-5 h-5"></i> 
+              Live Demo
+            </a>
+          ` : ''}
+        </div>
+      `;
 
-      return `<span class="text-sm ${bgColor} ${textColor} px-2 py-1 rounded">${tag}</span>`;
-    }).join('')}
-  </div>
-  <a href="${project.github}" target="_blank" class="inline-flex items-center mt-4 text-blue-600 hover:underline">
-    <i data-feather="github" class="mr-2"></i> View on GitHub
-  </a>
-`;
-
-
+      // Re-initialize Feather icons for modal content
+      feather.replace();
       document.getElementById('modal').classList.remove('hidden');
     }
 
@@ -416,28 +640,38 @@
       document.getElementById('modal').classList.add('hidden');
     }
 
-    // Filter Buttons
-    const buttons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.project-card');
+    // Close modal when clicking outside
+    document.getElementById('modal').addEventListener('click', (e) => {
+      if (e.target.id === 'modal') {
+        closeModal();
+      }
+    });
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const category = btn.dataset.filter;
+    // Escape key to close modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
 
-        buttons.forEach(b => b.classList.remove('bg-blue-600', 'text-white'));
-        btn.classList.add('bg-blue-600', 'text-white');
+    // Initialize animations on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-        cards.forEach(card => {
-          const cardCategory = card.dataset.category;
-          if (category === 'all' || category === cardCategory) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
-        });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fadeIn');
+        }
       });
+    }, observerOptions);
+
+    // Observe all sections for animations
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
     });
   </script>
-
 </body>
 </html>
